@@ -1,0 +1,9 @@
+{
+  "name": "mastra-features-repro",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@mastra/core": "1.68.0-alpha.6",
+    "zod": "^4.0.0"
+  }
+}
