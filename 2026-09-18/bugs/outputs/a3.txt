@@ -1,0 +1,14 @@
+result.text          = "Sí, entregamos en Piantini."
+run outcome          = SUCCESS (the fallback answered)
+calls to flaky model = 1
+calls to fallback    = 1
+
+log records at level=error : 2
+  [error 1] Error in LLM execution
+  [error 2] Error executing model flaky-primary
+log records at level=warn  : 1
+  [warn 1] No `storage` configured on Mastra — falling back to an in-memory store. In-memory storage is not durable: all data is lost on restart, and it is not safe for production. Configure a persistent storage adapter (e.g. @mastra/libsql, @mastra/pg, @mastra/cloudflare). See https://mastra.ai/docs/storage
+
+terminal "Exhausted all fallback models." logged: false
+
+REPRODUCED: the run SUCCEEDED via the fallback, yet 2 record(s) about the recovered attempt were logged at level=error, with no warn-level downgrade and no terminal marker.

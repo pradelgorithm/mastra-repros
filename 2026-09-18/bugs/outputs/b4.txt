@@ -1,0 +1,9 @@
+resolved model class     : ModelRouterLanguageModel
+specificationVersion     : v2
+has _getStreamTransport  : function
+direct call              : undefined
+proxied call             : THREW TypeError - Cannot read private member #lastStreamTransport from an object whose class did not declare it
+
+agent-CAD1joQX.js:26525 calls routerModel._getStreamTransport() during a run,
+so a Proxy-wrapped router model throws there. Verdict: expected JS behaviour;
+use AI SDK wrapLanguageModel (or a subclass) instead of a bare Proxy. NOT FILED.

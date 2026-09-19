@@ -1,0 +1,12 @@
+{
+  "name": "mastra-repros-2",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Minimal keyless reproductions for bugs filed against mastra-ai/mastra",
+  "dependencies": {
+    "@mastra/core": "1.68.0-alpha.6",
+    "@mastra/loggers": "1.3.2",
+    "zod": "4.4.3"
+  }
+}

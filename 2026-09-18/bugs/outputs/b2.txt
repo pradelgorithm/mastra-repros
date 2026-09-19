@@ -1,0 +1,14 @@
+--- stream() ---
+  structurer was called       : 1 time(s)
+  structurer user prompt      : [{"role":"user","content":[{"type":"text","text":"Extract and structure the key information from the following text according to the specified schema. Keep the original meaning and details. Rely on the provided text and conversation history.\n\n# Assistant Response\nAna quiere 2 cajas para el viernes.","providerOptions":{"mastra":{"createdAt":1789777043292}}}]}]
+  contains the primary text   : true
+  result.object               : {"customerName":"Ana","boxCount":2}
+
+--- generate() ---
+  structurer was called       : 1 time(s)
+  structurer user prompt      : [{"role":"user","content":[{"type":"text","text":"Extract and structure the key information from the following text according to the specified schema. Keep the original meaning and details. Rely on the provided text and conversation history.\n\n# Assistant Response\nAna quiere 2 cajas para el viernes.","providerOptions":{"mastra":{"createdAt":1789777043302}}}]}]
+  contains the primary text   : true
+  result.object               : {"customerName":"Ana","boxCount":2}
+
+
+PASS (not reproduced): both stream() and generate() hand the structuring model the primary text; buildStructuringPrompt is never empty here.

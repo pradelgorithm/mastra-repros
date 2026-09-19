@@ -1,0 +1,27 @@
+model actually produced: "Entregamos en Piantini el viernes. Tarjeta o transferencia." 
+
+--- tripwire raised from processOutputResult ---
+  result.text                : ""
+  result.steps[0].text       : "Entregamos en Piantini el viernes. Tarjeta o transferencia."
+  response.messages has prose: true
+  result.tripwire            : {"reason":"rejected at processOutputResult","processorId":"tripwire-via-processOutputResult"}
+  response.messages          : [{"role":"assistant","content":[{"type":"text","text":"Entregamos en Piantini el viernes. Tarjeta o transferencia.","providerOptions":{"mastra":{"createdAt":1789776953357}}}]}]
+
+--- tripwire raised from processOutputStep ---
+  result.text                : "Entregamos en Piantini el viernes. Tarjeta o transferencia."
+  result.steps[0].text       : "Entregamos en Piantini el viernes. Tarjeta o transferencia."
+  response.messages has prose: true
+  result.tripwire            : {"reason":"rejected at processOutputStep","processorId":"tripwire-via-processOutputStep"}
+  response.messages          : [{"role":"assistant","content":[{"type":"text","text":"Entregamos en Piantini el viernes. Tarjeta o transferencia.","providerOptions":{"mastra":{"createdAt":1789776953364}}}]}]
+
+--- tripwire raised from processOutputStream ---
+  result.text                : "Entregamos en Piantini el viernes. Tarjeta o transferencia."
+  result.steps[0].text       : undefined
+  response.messages has prose: false
+  result.tripwire            : {"reason":"rejected at processOutputStream","processorId":"tripwire-via-processOutputStream"}
+  response.messages          : undefined
+
+hooks where result.text was blanked while the prose survived elsewhere: processOutputResult
+hooks where result.text kept the prose                                : processOutputStep, processOutputStream
+
+REPRODUCED: a tripwire from processOutputResult sets result.text to "" while result.steps[0].text and result.response.messages still hold the full answer (and the other 2 hook(s) do not blank it at all).

@@ -1,0 +1,23 @@
+===== structuring model system prompt (verbatim) =====
+You are a data structuring specialist. Your job is to convert unstructured text into a specific JSON format.
+
+TASK: Convert the provided unstructured text into valid JSON that matches the following schema:
+
+REQUIREMENTS:
+- Return ONLY valid JSON, no additional text or explanation
+- Extract relevant information from the input text
+- If information is missing, use reasonable defaults or null values
+- Maintain data types as specified in the schema
+- Be consistent and accurate in your conversions
+
+The input text may be in any format (sentences, bullet points, paragraphs, etc.). Extract the relevant data and structure it according to the schema.
+===== end =====
+
+(the structuring model DOES receive responseFormat.schema: {"customerName":{"type":"string"},"deliveryDistrict":{"type":"string"},"boxCount":{"type":"number"}} )
+
+schema property names: customerName, deliveryDistrict, boxCount
+missing from the structuring prompt: customerName, deliveryDistrict, boxCount
+prompt contains "matches the following schema:": true
+text immediately after that phrase: "\n\nREQUIREMENTS:\n- Return ONLY valid JSON"
+
+REPRODUCED: the structuring prompt announces a schema and then includes none of its fields.

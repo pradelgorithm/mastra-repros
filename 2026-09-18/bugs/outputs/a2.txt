@@ -1,0 +1,29 @@
+primary model calls (steps): 2
+
+--- step 1 system message (verbatim) ---
+You take orders. Be brief.
+
+Your response will be processed by another agent to extract structured data. Please ensure your response contains comprehensive information for all the following fields that will be extracted:
+
+{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"customerName":{"type":"string"},"deliveryDistrict":{"type":"string"},"boxCount":{"type":"number"}},"required":["customerName","deliveryDistrict","boxCount"],"additionalProperties":false}
+
+
+You don't need to format your response as JSON unless the user asks you to. Just ensure your natural language response includes relevant information for each field in the schema above.
+--- step 1: preamble injected = true, schema fields present = true ---
+
+--- step 2 system message (verbatim) ---
+You take orders. Be brief.
+
+Your response will be processed by another agent to extract structured data. Please ensure your response contains comprehensive information for all the following fields that will be extracted:
+
+{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"customerName":{"type":"string"},"deliveryDistrict":{"type":"string"},"boxCount":{"type":"number"}},"required":["customerName","deliveryDistrict","boxCount"],"additionalProperties":false}
+
+
+You don't need to format your response as JSON unless the user asks you to. Just ensure your natural language response includes relevant information for each field in the schema above.
+--- step 2: preamble injected = true, schema fields present = true ---
+
+structuredOutput.instructions reached either model: true
+
+jsonPromptInjection: false  ->  injected on 2/2 steps
+
+REPRODUCED: jsonPromptInjection:false was ignored; the schema preamble was injected into 2 step(s).

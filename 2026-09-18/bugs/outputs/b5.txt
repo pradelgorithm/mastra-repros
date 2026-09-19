@@ -1,0 +1,24 @@
+--- control: { stepMs: 50 } ---
+  modelSettings.timeout = {"stepMs":50}
+  outcome               = THREW MastraTimeoutError: Model call timed out after 50ms (modelSettings.timeout.stepMs)
+  text                  = undefined
+  elapsed               = 66 ms (model stalls 700 ms)
+
+--- bug: timeout: 50   (a plain number) ---
+  modelSettings.timeout = 50
+  outcome               = COMPLETED
+  text                  = "tarde pero llegué"
+  elapsed               = 711 ms (model stalls 700 ms)
+
+--- edge: { stepMs: 0 } ---
+  modelSettings.timeout = {"stepMs":0}
+  outcome               = COMPLETED
+  text                  = "tarde pero llegué"
+  elapsed               = 709 ms (model stalls 700 ms)
+
+object form { stepMs: 50 } enforced the timeout : true
+number form 50            enforced the timeout : false
+{ stepMs: 0 }             enforced the timeout : false
+any warning logged about the unusable timeout   : false
+
+REPRODUCED: `modelSettings: { timeout: 50 }` — the shape the AI SDK accepts — is silently ignored: every timeout is disabled, with no warning and no error.

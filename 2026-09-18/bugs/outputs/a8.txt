@@ -1,0 +1,33 @@
+=== 1. direct path (structuredOutput.schema only) — invalid object ===
+  direct error class     : MastraError
+  direct .message        : "Structured output validation failed: - boxCount: Invalid input: expected number, received undefined"
+  direct .id             : "STRUCTURED_OUTPUT_SCHEMA_VALIDATION_FAILED"
+  direct .details        : {"value":"{\"customerName\":\"Ana\"}"}
+  direct .cause?.message : "[\n  {\n    \"expected\": \"number\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"boxCount\"\n    ],\n    \"message\": \"Invalid input: expected number, received undefined\"\n  }\n]"
+  -> raw model text recoverable from the error: "{\"customerName\":\"Ana\"}" (this is the PARSED value, the raw text is not attached)
+
+=== 2. direct path — output is not JSON at all ===
+  parse error class     : MastraError
+  parse .message        : "Structured output validation failed: - root: Invalid input: expected object, received undefined"
+  parse .id             : "STRUCTURED_OUTPUT_SCHEMA_VALIDATION_FAILED"
+  parse .details        : {"value":"undefined"}
+  parse .cause?.message : "[\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [],\n    \"message\": \"Invalid input: expected object, received undefined\"\n  }\n]"
+  -> the text the model actually returned is NOT attached anywhere on the error
+
+=== 3. processor path (structuredOutput.model set) — invalid object, errorStrategy:"strict" ===
+  object   = undefined
+  tripwire = {
+  "reason": "[StructuredOutputProcessor] Structuring failed: Structured output validation failed: - boxCount: Invalid input: expected number, received undefined",
+  "retry": true,
+  "processorId": "structured-output"
+}
+  tripwire.reason typeof = string
+  tripwire carries ZodError issues: false
+  tripwire carries the raw structurer value: false
+  error-level logs: [
+  '[StructuredOutputProcessor] Structuring failed: Structured output validation failed: - boxCount: Invalid input: expected number, received undefined',
+  'Error in agent stream'
+]
+  logged args are Error objects (not reachable by the caller): [ 'MastraError', 'Object' ]
+
+REPRODUCED: on the processor path the MastraError is flattened into a tripwire string: the caller gets no ZodError issues, no details.value, and no raw structurer output.

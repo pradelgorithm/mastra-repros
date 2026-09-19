@@ -1,0 +1,14 @@
+raw model text (truncated by the provider): "{\"name\":\"Ana\",\"items\":[\"lechuga\",\"zanahoria\""
+result.text        = "{\"name\":\"Ana\",\"items\":[\"lechuga\",\"zanahoria\""
+result.finishReason= "length"
+result.object      = {"name":"Ana","items":["lechuga","zanahoria"]}
+
+error-level logs: []
+warn-level logs : []
+
+REPRODUCED: a response cut off by the provider (finishReason="length") was silently repaired into a "valid" object; the caller gets a complete-looking result with no error and no warning.
+
+===== variant: truncation lands before a REQUIRED field =====
+variant threw: MastraError - Structured output validation failed: - total: Invalid input: expected number, received undefined
+variant error carries finishReason/truncation info: {"details":{"value":"{\"name\":\"Ana\"}"},"cause":"[\n  {\n    \"expected\": \"number\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"total\"\n    ],\n    \"message\": \"Invalid input: expected number, received undefined\"\n  }\n]"}
+variant error-level logs: []
