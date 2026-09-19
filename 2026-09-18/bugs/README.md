@@ -20,15 +20,15 @@ Verbatim output of each run is committed under [`outputs/`](./outputs).
 
 | Script | What it shows | Verdict | Issue |
 | --- | --- | --- | --- |
-| [`repro-a1.mjs`](./repro-a1.mjs) | `StructuredOutputProcessor.generateInstructions()` says "matches the following schema:" and never includes the schema | REPRODUCED | _(see table below)_ |
-| [`repro-a2.mjs`](./repro-a2.mjs) | `structuredOutput.jsonPromptInjection: false` is a no-op once `structuredOutput.model` is set — the full JSON schema is injected on every step | REPRODUCED | |
-| [`repro-a3.mjs`](./repro-a3.mjs) | A model chain that **recovers** still logs twice at `error` level, with no `warn` downgrade and no terminal marker | REPRODUCED | |
-| [`repro-a4.mjs`](./repro-a4.mjs) | Structured output ignores `finishReason: 'length'`; truncated JSON is repaired into a "valid" object | REPRODUCED | |
-| [`repro-a7.mjs`](./repro-a7.mjs) | An output-processor tripwire blanks `result.text` while `steps[].text` and `response.messages` keep the prose (and only one of the three tripwire hooks does it) | REPRODUCED | |
-| [`repro-a8.mjs`](./repro-a8.mjs) | On the processor path the `MastraError` is flattened into a tripwire string: no Zod issues, no `details.value`, no raw model output | REPRODUCED | |
-| [`repro-a9.mjs`](./repro-a9.mjs) | A caller abort mid-structuring leaves the processor enqueuing into a closed controller (`ERR_INVALID_STATE`) | REPRODUCED | |
+| [`repro-a1.mjs`](./repro-a1.mjs) | `StructuredOutputProcessor.generateInstructions()` says "matches the following schema:" and never includes the schema | REPRODUCED | [#24439](https://github.com/mastra-ai/mastra/issues/24439) |
+| [`repro-a2.mjs`](./repro-a2.mjs) | `structuredOutput.jsonPromptInjection: false` is a no-op once `structuredOutput.model` is set — the full JSON schema is injected on every step | REPRODUCED | [#24440](https://github.com/mastra-ai/mastra/issues/24440) |
+| [`repro-a3.mjs`](./repro-a3.mjs) | A model chain that **recovers** still logs twice at `error` level, with no `warn` downgrade and no terminal marker | REPRODUCED | [#24441](https://github.com/mastra-ai/mastra/issues/24441) |
+| [`repro-a4.mjs`](./repro-a4.mjs) | Structured output ignores `finishReason: 'length'`; truncated JSON is repaired into a "valid" object | REPRODUCED | [#24442](https://github.com/mastra-ai/mastra/issues/24442) |
+| [`repro-a7.mjs`](./repro-a7.mjs) | An output-processor tripwire blanks `result.text` while `steps[].text` and `response.messages` keep the prose (and only one of the three tripwire hooks does it) | REPRODUCED | [#24443](https://github.com/mastra-ai/mastra/issues/24443) |
+| [`repro-a8.mjs`](./repro-a8.mjs) | On the processor path the `MastraError` is flattened into a tripwire string: no Zod issues, no `details.value`, no raw model output | REPRODUCED | [#24444](https://github.com/mastra-ai/mastra/issues/24444) |
+| [`repro-a9.mjs`](./repro-a9.mjs) | A caller abort mid-structuring leaves the processor enqueuing into a closed controller (`ERR_INVALID_STATE`) | REPRODUCED | [#24445](https://github.com/mastra-ai/mastra/issues/24445) |
 | [`repro-b2.mjs`](./repro-b2.mjs) | Does `buildStructuringPrompt` ever hand the structurer an empty prompt? | **NOT REPRODUCED** — both `stream()` and `generate()` pass the primary text | not filed |
 | [`repro-b4.mjs`](./repro-b4.mjs) | `new Proxy(modelRouterModel, {})` breaks on the `#lastStreamTransport` private field | expected JS behaviour | not filed |
-| [`repro-b5.mjs`](./repro-b5.mjs) | `modelSettings.timeout` as a plain number silently disables every timeout | REPRODUCED | |
+| [`repro-b5.mjs`](./repro-b5.mjs) | `modelSettings.timeout` as a plain number silently disables every timeout | REPRODUCED | [#24446](https://github.com/mastra-ai/mastra/issues/24446) |
 
-Issue links are filled in below once each report is filed.
+`repro-b2.mjs` and `repro-b4.mjs` were investigated and **not** filed — see the verdict column.
