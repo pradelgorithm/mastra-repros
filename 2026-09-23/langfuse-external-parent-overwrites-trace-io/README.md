@@ -1,5 +1,7 @@
 # A run nested with `tracingOptions.parentSpanId` overwrites the Langfuse trace's input/output/name
 
+Filed as [mastra-ai/mastra#24825](https://github.com/mastra-ai/mastra/issues/24825).
+
 A run started with `tracingOptions: { traceId, parentSpanId }` has no in-process parent, so its `agent_run` span is
 `isRootSpan: true` (with the given id as `externalParentSpanId`). `@mastra/otel-exporter` correctly exports it as a
 child of that span, but `@mastra/langfuse`'s `mapMastraToLangfuseAttributes` writes `langfuse.trace.input`,

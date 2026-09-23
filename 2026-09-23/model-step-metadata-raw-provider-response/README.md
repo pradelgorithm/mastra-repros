@@ -1,5 +1,7 @@
 # `model_step` span metadata carries the provider's raw HTTP response body and headers
 
+Filed as [mastra-ai/mastra#24826](https://github.com/mastra-ai/mastra/issues/24826).
+
 The agentic loop builds each step's `step-finish` metadata as
 `{ providerMetadata, ...responseMetadata, ...rawResponse, modelMetadata, headers: rawResponse?.headers, request }`,
 where `rawResponse` is the `response` object the model returned (`response.body` + `response.headers` from

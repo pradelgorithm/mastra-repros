@@ -1,5 +1,7 @@
 # Every Langfuse observation's `version` is the @mastra/core package version
 
+Filed as [mastra-ai/mastra#24827](https://github.com/mastra-ai/mastra/issues/24827).
+
 - `SpanConverter` stamps the OTel resource with `service.version` = the installed `@mastra/core` version.
 - Langfuse sets an observation's (and trace's) `version` from the span attribute `langfuse.version`, falling back
   to the resource's `service.version`.

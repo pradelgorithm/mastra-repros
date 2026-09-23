@@ -15,7 +15,7 @@ cd <folder> && npm i && node repro.mjs   # exit 1 = reproduced
 
 | Folder | What it shows | Verdict | Issue |
 | --- | --- | --- | --- |
-| [`langfuse-reasoning-tokens-double-priced`](./langfuse-reasoning-tokens-double-priced) | `output_tokens` (includes reasoning) + `reasoning_tokens` are two Langfuse buckets: 42,711 tokens / +16.6% cost instead of 41,079 | REPRODUCED | pending |
-| [`langfuse-external-parent-overwrites-trace-io`](./langfuse-external-parent-overwrites-trace-io) | A run nested with `tracingOptions.parentSpanId` writes `langfuse.trace.input/output/name` and replaces the outer trace's | REPRODUCED | pending |
-| [`model-step-metadata-raw-provider-response`](./model-step-metadata-raw-provider-response) | `model_step` metadata exports the provider's raw response `body` (170 KB here) and `headers` | REPRODUCED | pending |
-| [`langfuse-version-is-mastra-core-version`](./langfuse-version-is-mastra-core-version) | Langfuse `version` is always the `@mastra/core` version; `metadata.version` goes to a non-Langfuse attribute | REPRODUCED | pending |
+| [`langfuse-reasoning-tokens-double-priced`](./langfuse-reasoning-tokens-double-priced) | `output_tokens` (includes reasoning) + `reasoning_tokens` are two Langfuse buckets: 42,711 tokens / +16.6% cost instead of 41,079 | REPRODUCED | [#24824](https://github.com/mastra-ai/mastra/issues/24824) |
+| [`langfuse-external-parent-overwrites-trace-io`](./langfuse-external-parent-overwrites-trace-io) | A run nested with `tracingOptions.parentSpanId` writes `langfuse.trace.input/output/name` and replaces the outer trace's | REPRODUCED | [#24825](https://github.com/mastra-ai/mastra/issues/24825) |
+| [`model-step-metadata-raw-provider-response`](./model-step-metadata-raw-provider-response) | `model_step` metadata exports the provider's raw response `body` (170 KB here) and `headers` | REPRODUCED | [#24826](https://github.com/mastra-ai/mastra/issues/24826) |
+| [`langfuse-version-is-mastra-core-version`](./langfuse-version-is-mastra-core-version) | Langfuse `version` is always the `@mastra/core` version; `metadata.version` goes to a non-Langfuse attribute | REPRODUCED | [#24827](https://github.com/mastra-ai/mastra/issues/24827) |

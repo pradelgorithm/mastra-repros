@@ -1,5 +1,7 @@
 # @mastra/langfuse prices reasoning tokens twice
 
+Filed as [mastra-ai/mastra#24824](https://github.com/mastra-ai/mastra/issues/24824).
+
 `@mastra/otel-exporter`'s `formatUsageMetrics` exports `gen_ai.usage.output_tokens = usage.outputTokens` (Mastra's
 `UsageStats.outputTokens` is the **total**, reasoning included) **and** `gen_ai.usage.reasoning_tokens =
 usage.outputDetails.reasoning`. Langfuse's OTLP ingestion only subtracts the spec-named
