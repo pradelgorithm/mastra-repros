@@ -1,0 +1,13 @@
+provider response body: 170,538 bytes of JSON
+
+agent.generate() — model_step span
+  exported span.metadata keys: [ 'runId', 'headers', 'body', 'modelMetadata' ]
+  Langfuse attribute mastra.metadata.body   : 170,538 chars, starts {"id":"resp_fake","object":"response","model":"gpt-6-luna","status":"completed","output":[…
+  Langfuse attribute mastra.metadata.headers: {"content-type":"application/json","content-length":"173412","x-request-id":"req_00000000000000000000000000000000","apim-request-id":"00000000-0000-0000-0000-000000000000","azureai-processed-tokens":"41079","x-ratelimit-remaining-tokens":"1998000"}
+
+agent.stream() — model_step span
+  exported span.metadata keys: [ 'runId', 'headers', 'modelMetadata' ]
+  Langfuse attribute mastra.metadata.body   : (absent)
+  Langfuse attribute mastra.metadata.headers: {"content-type":"application/json","content-length":"173412","x-request-id":"req_00000000000000000000000000000000","apim-request-id":"00000000-0000-0000-0000-000000000000","azureai-processed-tokens":"41079","x-ratelimit-remaining-tokens":"1998000"}
+
+REPRODUCED: the provider's raw response body (generate) and response headers (generate + stream) are attached to the model_step span metadata and exported by default.

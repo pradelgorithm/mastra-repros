@@ -1,0 +1,21 @@
+installed @mastra/core: 1.69.0; application version we tried to set: my-app-2.3.1
+
+OTel resource attached to every exported span: {
+  'service.name': 'mastra-repro',
+  'service.version': '1.69.0',
+  'telemetry.sdk.name': '@mastra/langfuse',
+  'telemetry.sdk.version': '1.5.9',
+  'telemetry.sdk.language': 'nodejs'
+} 
+
+┌─────────┬───────────────────────────────┬──────────────────┬────────────────────────┬──────────────────┬─────────────────────┐
+│ (index) │ span                          │ langfuse.version │ langfuse.trace.version │ langfuse.release │ => Langfuse version │
+├─────────┼───────────────────────────────┼──────────────────┼────────────────────────┼──────────────────┼─────────────────────┤
+│ 0       │ 'model_chunk assistant'       │ '(unset)'        │ 'my-app-2.3.1'         │ 'my-app-2.3.1'   │ '1.69.0'            │
+│ 1       │ 'chat fake-model'             │ '(unset)'        │ 'my-app-2.3.1'         │ 'my-app-2.3.1'   │ '1.69.0'            │
+│ 2       │ 'agent_step assistant'        │ '(unset)'        │ 'my-app-2.3.1'         │ 'my-app-2.3.1'   │ '1.69.0'            │
+│ 3       │ 'model_generation fake-model' │ '(unset)'        │ 'my-app-2.3.1'         │ 'my-app-2.3.1'   │ '1.69.0'            │
+│ 4       │ 'invoke_agent assistant'      │ '(unset)'        │ 'my-app-2.3.1'         │ 'my-app-2.3.1'   │ '1.69.0'            │
+└─────────┴───────────────────────────────┴──────────────────┴────────────────────────┴──────────────────┴─────────────────────┘
+
+REPRODUCED: every observation (and the trace) gets version "1.69.0" — the @mastra/core package version. metadata.version went to langfuse.trace.version (not a Langfuse attribute), and resourceAttributes was ignored.

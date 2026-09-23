@@ -1,0 +1,19 @@
+Model reported (LanguageModelV2 usage): {
+  inputTokens: 39056,
+  outputTokens: 2023,
+  reasoningTokens: 1632,
+  totalTokens: 41079
+}
+
+Span handed to LangfuseSpanProcessor: "chat gpt-6-luna" (mastra.span.type=model_inference)
+  gen_ai.usage.* attributes: {
+  'gen_ai.usage.input_tokens': 39056,
+  'gen_ai.usage.output_tokens': 2023,
+  'gen_ai.usage.reasoning_tokens': 1632
+}
+  langfuse.observation.usage_details: (not set)
+  -> Langfuse usage_details: { reasoning_tokens: 1632, input: 39056, output: 2023 }  total: 42711
+  -> Langfuse inferred cost: $0.0057331   provider-billed cost: $0.0049171   (+16.6%)
+  (same span with gen_ai.usage.reasoning.output_tokens instead -> { input: 39056, output: 391, output_reasoning_tokens: 1632 } total: 41079, cost: $0.0049171)
+
+REPRODUCED: output_tokens (2023) already includes the 1632 reasoning tokens, yet they are exported a second time as gen_ai.usage.reasoning_tokens. Langfuse keeps that key as its own bucket, so the generation totals 42,711 tokens instead of 41,079 and reasoning is priced twice.

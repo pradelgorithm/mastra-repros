@@ -1,0 +1,26 @@
+
+agent_run span "invoke_agent assistant" (export order #5 of 10):
+{
+  traceId: '18bd100d28768112ef8d7f67a68a9bd7',
+  spanId: '4fefac08ca99a73d',
+  'OTel parent span id': '(none — true root)',
+  'langfuse.trace.name': 'assistant',
+  'langfuse.trace.input': 'When does my order ship?',
+  'langfuse.trace.output': '{"text":"Your order ships Friday.","files":[]}',
+  'langfuse.trace.metadata.agentId': 'assistant',
+  'langfuse.trace.metadata.runId': '90bbee1f-090d-41e2-b288-e9f0a642d6d6'
+}
+
+agent_run span "invoke_agent judge" (export order #10 of 10):
+{
+  traceId: '18bd100d28768112ef8d7f67a68a9bd7',
+  spanId: 'd94d08163db08c43',
+  'OTel parent span id': '4fefac08ca99a73d',
+  'langfuse.trace.name': 'judge',
+  'langfuse.trace.input': 'Grade: "Your order ships Friday."',
+  'langfuse.trace.output': '{"text":"{\\"score\\":1}","files":[]}',
+  'langfuse.trace.metadata.agentId': 'judge',
+  'langfuse.trace.metadata.runId': '18f6836c-ad55-4aae-9879-c1fb41dc836f'
+}
+
+REPRODUCED: the judge's agent_run is exported as a child of the turn's span (same traceId, OTel parent = 4fefac08ca99a73d), yet it carries langfuse.trace.input, langfuse.trace.output, langfuse.trace.name. It is exported after the turn, so in Langfuse the trace's name/input/output become the judge's.

@@ -1,0 +1,19 @@
+{
+  "name": "mastra-repro-langfuse-version-is-mastra-core-version",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Keyless reproduction: every Langfuse observation version is the @mastra/core package version",
+  "scripts": {
+    "start": "node repro.mjs"
+  },
+  "dependencies": {
+    "@mastra/core": "1.69.0",
+    "@mastra/observability": "1.18.0",
+    "@mastra/langfuse": "1.5.9",
+    "@mastra/otel-exporter": "1.4.1",
+    "@opentelemetry/api": "1.9.1",
+    "@opentelemetry/sdk-trace-base": "2.11.0",
+    "zod": "4.6.5"
+  }
+}
