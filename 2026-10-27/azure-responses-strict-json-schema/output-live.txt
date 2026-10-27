@@ -1,0 +1,48 @@
+@mastra/core 1.79.0
+
+### openai/gpt-5.4 (model router, default options)
+{
+  "url": "https://api.openai.com/v1/responses",
+  "text.format.strict": true,
+  "text.format.schema.required": [
+    "reply",
+    "note",
+    "items"
+  ],
+  "items[].required": [
+    "name",
+    "qty"
+  ]
+}
+
+### azure-openai via AzureOpenAIGateway (default options)
+{
+  "url": "https://<resource>.openai.azure.com/openai/v1/responses?api-version=v1",
+  "text.format.strict": false,
+  "text.format.schema.required": [
+    "reply",
+    "items"
+  ],
+  "items[].required": [
+    "name"
+  ],
+  "tools[0].strict": false
+}
+endpoint answered: Structured output validation failed: - items: Invalid input: expected array, received undefined
+
+### azure-openai via AzureOpenAIGateway, providerOptions.azure.strictJsonSchema: true
+{
+  "url": "https://<resource>.openai.azure.com/openai/v1/responses?api-version=v1",
+  "text.format.strict": true,
+  "text.format.schema.required": [
+    "reply",
+    "items"
+  ],
+  "items[].required": [
+    "name"
+  ],
+  "tools[0].strict": true
+}
+endpoint answered: Invalid schema for response_format 'response': In context=('properties', 'items', 'anyOf', '0', 'items'), 'required' is required to be supplied and to be an array including every key in properties. Missing 'qty'.
+
+REPRODUCED: openai/* gets a prepared strict schema; azure-openai/* gets strict:false, and with strictJsonSchema:true an UNPREPARED schema (note/qty missing from required) plus strict tools.

@@ -1,0 +1,14 @@
+{
+  "name": "mastra-repro-azure-responses-strict-json-schema",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Reproduction: structured output through AzureOpenAIGateway (Responses API) is never prepared for OpenAI strict mode",
+  "scripts": {
+    "start": "node repro.mjs"
+  },
+  "dependencies": {
+    "@mastra/core": "1.79.0",
+    "zod": "4.6.7"
+  }
+}
