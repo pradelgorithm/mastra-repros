@@ -10,4 +10,4 @@ cd <folder> && npm i && node repro.mjs   # exit 1 = reproduced
 
 | Folder | What it shows | Verdict | Issue |
 | --- | --- | --- | --- |
-| [`azure-responses-strict-json-schema`](./azure-responses-strict-json-schema) | `AzureOpenAIGateway` sends `strict: false` and never prepares the schema; `strictJsonSchema: true` sends an unprepared schema and strict tools | REPRODUCED | (pending) |
+| [`azure-responses-strict-json-schema`](./azure-responses-strict-json-schema) | `AzureOpenAIGateway` sends `strict: false` and never prepares the schema; `strictJsonSchema: true` sends an unprepared schema and strict tools | REPRODUCED | [#28593](https://github.com/mastra-ai/mastra/issues/28593) |

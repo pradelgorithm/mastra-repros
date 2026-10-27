@@ -1,5 +1,7 @@
 # Structured output through `AzureOpenAIGateway` (Responses API) is never prepared for strict mode
 
+Filed as [mastra-ai/mastra#28593](https://github.com/mastra-ai/mastra/issues/28593).
+
 The same `Agent.generate(..., { structuredOutput })` call goes out differently depending on how the OpenAI model is
 reached:
 
