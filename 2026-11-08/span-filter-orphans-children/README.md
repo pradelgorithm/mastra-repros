@@ -1,6 +1,6 @@
 # `spanFilter` orphans the children of a span it drops
 
-Filed as (issue link pending).
+Filed as [mastra-ai/mastra#29693](https://github.com/mastra-ai/mastra/issues/29693).
 
 `excludeSpanTypes` and `spanFilter` both drop spans before export. Since #20881 (the fix for #20818), a span dropped
 by `excludeSpanTypes` is marked `isExcluded` when it is created, and its children skip it when they resolve their
