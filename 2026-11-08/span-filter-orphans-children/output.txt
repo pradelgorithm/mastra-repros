@@ -1,0 +1,24 @@
+
+A. excludeSpanTypes: [MODEL_STEP]
+  agent_run         parent: (root)
+  model_generation  parent: agent_run
+  tool_call         parent: model_generation
+  orphans: none
+  started but never ended: none
+
+B. spanFilter: span => span.type !== MODEL_STEP
+  agent_run         parent: (root)
+  model_generation  parent: agent_run
+  tool_call         parent: model_step   <- parent never exported
+  orphans: tool_call
+  started but never ended: none
+
+C. spanFilter from the config docs: "only keep tool calls that failed"
+  agent_run         parent: (root)
+  model_generation  parent: agent_run
+  model_step        parent: model_generation
+  tool_call         parent: model_step
+  orphans: none
+  started but never ended: tool_call
+
+REPRODUCED: excludeSpanTypes orphans 0, spanFilter orphans 1, spans started but never ended 1
