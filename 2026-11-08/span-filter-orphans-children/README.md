@@ -2,7 +2,7 @@
 
 Filed as [mastra-ai/mastra#29693](https://github.com/mastra-ai/mastra/issues/29693).
 
-`excludeSpanTypes` and `spanFilter` both drop spans before export. Since #20881 (the fix for #20818), a span dropped
+`excludeSpanTypes` and `spanFilter` both drop spans before export. Since mastra-ai/mastra#20881 (the fix for mastra-ai/mastra#20818), a span dropped
 by `excludeSpanTypes` is marked `isExcluded` when it is created, and its children skip it when they resolve their
 `parentSpanId`. `spanFilter` runs later, in `getSpanForExport`, on each event of a span. Nothing marks the span, so:
 

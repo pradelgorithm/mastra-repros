@@ -10,4 +10,4 @@ cd <folder> && npm i && node repro.mjs   # exit 1 = reproduced
 
 | Folder | What it shows | Verdict | Issue |
 | --- | --- | --- | --- |
-| [`span-filter-orphans-children`](./span-filter-orphans-children) | `spanFilter` leaves the children of a dropped span pointing at it (`excludeSpanTypes` re-parents them since #20881), and can drop a span's `SPAN_ENDED` after exporting its `SPAN_STARTED` | REPRODUCED | [#29693](https://github.com/mastra-ai/mastra/issues/29693) |
+| [`span-filter-orphans-children`](./span-filter-orphans-children) | `spanFilter` leaves the children of a dropped span pointing at it (`excludeSpanTypes` re-parents them since mastra-ai/mastra#20881), and can drop a span's `SPAN_ENDED` after exporting its `SPAN_STARTED` | REPRODUCED | [#29693](https://github.com/mastra-ai/mastra/issues/29693) |
