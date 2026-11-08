@@ -1,6 +1,6 @@
 # `@mastra/otel-bridge` drops every log in an app on OpenTelemetry JS SDK 3
 
-Filed as (issue link pending).
+Filed as [mastra-ai/mastra#29695](https://github.com/mastra-ai/mastra/issues/29695).
 
 The bridge forwards Mastra logs to the app's global OpenTelemetry `LoggerProvider`, which it reads through `logs`
 from `@opentelemetry/api-logs` ([bridge.ts#L31](https://github.com/mastra-ai/mastra/blob/e3cac09ebd2f3009373cf2d42fb7d45821224fe1/observability/otel-bridge/src/bridge.ts#L31),

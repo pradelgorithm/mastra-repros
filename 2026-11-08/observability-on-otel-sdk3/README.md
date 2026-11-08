@@ -1,6 +1,6 @@
 # Mastra's observability packages in an app on OpenTelemetry JS SDK 3
 
-Filed as (issue link pending).
+Filed as [mastra-ai/mastra#29696](https://github.com/mastra-ai/mastra/issues/29696).
 
 `./install-matrix.sh` installs each Mastra package that depends on OpenTelemetry into a fresh npm project that is
 already on OpenTelemetry JS SDK 3 (`@opentelemetry/api` 1.10.0, `sdk-trace` and `sdk-logs` 3.1.0, plus
