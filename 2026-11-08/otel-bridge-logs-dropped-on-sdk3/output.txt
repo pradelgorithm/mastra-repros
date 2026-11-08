@@ -1,0 +1,13 @@
+app on OpenTelemetry JS SDK 3.1.0 (sdk-logs 3.1.0, api 1.10.0)
+  bridge's LoggerProvider: ProxyLoggerProvider
+  spans received: 1
+  logs received:  0
+REPRODUCED: the span arrived, the log was dropped
+exit=1
+
+app on OpenTelemetry JS SDK 2.12.0 (sdk-logs 0.223.0, api 1.9.1)
+  bridge's LoggerProvider: the app provider
+  spans received: 1
+  logs received:  1
+NOT REPRODUCED: span and log both arrived
+exit=0

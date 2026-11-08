@@ -1,0 +1,20 @@
+{
+  "name": "mastra-repro-otel-bridge-logs-dropped-on-sdk3",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Keyless reproduction: @mastra/otel-bridge drops every log in an app on OpenTelemetry JS SDK 3 (it reads the LoggerProvider through @opentelemetry/api-logs)",
+  "scripts": {
+    "start": "node repro.mjs"
+  },
+  "dependencies": {
+    "@mastra/core": "1.82.0",
+    "@mastra/observability": "1.23.1",
+    "@mastra/otel-bridge": "1.5.21",
+    "@opentelemetry/api": "1.10.0",
+    "@opentelemetry/context-async-hooks": "3.1.0",
+    "@opentelemetry/sdk-logs": "3.1.0",
+    "@opentelemetry/sdk-trace": "3.1.0",
+    "zod": "4.6.7"
+  }
+}
